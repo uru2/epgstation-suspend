@@ -1,0 +1,15 @@
+[Unit]
+Description=Unload/load px4_drv driver module
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/usr/sbin/rmmod -v -f px4_drv
+ExecStartPost=-/bin/sh -c 'echo "Unload px4_drv driver finished."'
+ExecStop=/usr/sbin/modprobe -v px4_drv
+ExecStopPost=-/bin/sh -c 'echo "Load px4_drv driver finished."'
+
+[Install]
+WantedBy=sleep.target

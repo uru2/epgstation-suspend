@@ -1,0 +1,12 @@
+[Unit]
+Description=resume actions
+After=sleep.target suspend.target hibernate.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/local/sbin/resume.sh
+
+[Install]
+WantedBy=sleep.target suspend.target hibernate.target
+

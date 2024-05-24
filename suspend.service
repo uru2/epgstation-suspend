@@ -1,0 +1,10 @@
+[Unit]
+Description=suspend actions
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/local/sbin/suspend.sh
+
+[Install]
+WantedBy=multi-user.target
